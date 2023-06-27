@@ -33,19 +33,19 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("Agenda de Contatos"),
         centerTitle: true,
-        backgroundColor: Colors.black,
         actions: <Widget>[
           PopupMenuButton<OrderOptions>(
-            itemBuilder: ((context) => <PopupMenuEntry<OrderOptions>>[
-                  const PopupMenuItem<OrderOptions>(
-                    child: Text("Ordenar de A-Z"),
-                    value: OrderOptions.orderaz,
-                  ),
-                  const PopupMenuItem<OrderOptions>(
-                    child: Text("Ordenar de Z-A"),
-                    value: OrderOptions.orderza,
-                  )
-                ]),
+            itemBuilder: (context) => <PopupMenuEntry<OrderOptions>>[
+              const PopupMenuItem<OrderOptions>(
+                child: Text("Ordenar de A-Z"),
+                value: OrderOptions.orderaz,
+              ),
+              const PopupMenuItem<OrderOptions>(
+                child: Text("Ordenar de Z-A"),
+                value: OrderOptions.orderza,
+              ),
+            ],
+            onSelected: _orderList,
           )
         ],
       ),
@@ -53,7 +53,6 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           showContatoPage();
         },
-        backgroundColor: const Color.fromARGB(255, 54, 133, 244),
         child: const Icon(Icons.add),
       ),
       body: ListView.builder(
@@ -62,14 +61,12 @@ class _HomePageState extends State<HomePage> {
           itemBuilder: (context, index) {
             return _contatoCard(context, index);
           }),
-      backgroundColor: Colors.blueGrey,
     );
   }
 
   Widget _contatoCard(BuildContext context, int index) {
     return GestureDetector(
       child: Card(
-        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Row(
